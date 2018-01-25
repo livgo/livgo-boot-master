@@ -12,3 +12,5 @@ Spring Boot 简版微服务技术框架
  6. spring-boot-service:业务逻辑模块
  7. spring-boot-core:核心类
  8. spring-boot-common:通用类
+ 
+联系人QQ：2212265563

@@ -1,16 +1,18 @@
-package com.livgo.boot.api.service;
+package com.livgo.boot.service;
 
-import com.livgo.boot.data.mapper.DemoMapper;
+import com.livgo.boot.common.Const;
+import com.livgo.boot.data.mapper.DemoBaseMapper;
 import com.livgo.boot.model.entity.Demo;
-import com.livgo.boot.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Description:
+ * Description:Demo业务基础Service
  * Author:     gaocl
  * Date:       2018/1/4
  * Version:    V1.0.0
@@ -18,10 +20,10 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class DemoApiService extends DemoService {
+public class DemoBaseService extends BaseService {
 
     @Autowired
-    private DemoMapper demoMapper;
+    private DemoBaseMapper demoBaseMapper;
 
     /**
      * 分页查询
@@ -30,7 +32,9 @@ public class DemoApiService extends DemoService {
      * @return
      */
     public List<Demo> listDemo(int pageNum) {
-        return super.listDemo(pageNum);
+        Map<String, Object> map = new HashMap<>();
+        map.put("limit", getPageStartIndex(pageNum) + "," + Const.PAGE_SIZE);
+        return demoBaseMapper.selectByPage(map);
     }
 
 }

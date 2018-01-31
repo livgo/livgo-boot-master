@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.livgo.boot.data.mapper.DemoMapper">
+<mapper namespace="com.livgo.boot.api.mapper.DemoMapper">
     <resultMap id="BaseResultMap" type="com.livgo.boot.model.entity.Demo">
         <id column="id" jdbcType="VARCHAR" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -11,10 +11,10 @@
         id, name, age
     </sql>
 
-    <select id="selectByPage" resultMap="BaseResultMap">
+    <select id="selectCount" resultType="java.lang.Integer">
         select
-        <include refid="Base_Column_List"/>
-        from t_demo where 1 limit ${limit}
+        count(*)
+        from t_demo where 1
     </select>
 
 </mapper>
